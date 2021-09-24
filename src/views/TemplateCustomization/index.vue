@@ -34,10 +34,27 @@
             <a-button type="danger" @click="deleteItemRow(index)">删除</a-button>
         </template>
     </a-table>
+    <div>
+        <span>审核人：</span>
+        <a-input v-model:value="audit"></a-input>
+    </div>
+    <div :style="{textAlign: 'center', marginTop: '20px'}">
+        <a-button type="primary" @click="() => (visible = true)">预览</a-button>
+    </div>
+    <a-modal
+      v-model:visible="visible"
+      title="模板预览"
+      width="100%"
+      wrapClassName="full-modal"
+      @ok="handleOk"
+    >
+        <Preview v-if="visible" :headerList="headerList" :itemList="itemList" :audit="audit"/>
+    </a-modal>
 </template>
 <script lang="ts" setup>
-import { reactive, computed } from 'vue'
-import { headerDataType, fieldSelectType, spanSelectType, itemDataType, inspectionItemSelectType } from '../utils/inteface'
+import { ref, reactive, computed } from 'vue'
+import { headerDataType, fieldSelectType, spanSelectType, itemDataType, inspectionItemSelectType } from '@/utils/interface/templateCustomization'
+import Preview from './Preview.vue'
 
 // 表头列表列设置
 const headerColumns = reactive([
@@ -126,7 +143,7 @@ const changeField = (record: headerDataType) => {
     record.label = item ? item.label : ''
 }
 
-
+// 项目列表列设置
 const itemColumns = reactive([
     {
         title: "检验项目",
@@ -161,6 +178,7 @@ const itemColumns = reactive([
     },
 ])
 
+// 项目列表数据
 const itemList = reactive<itemDataType []>([
     {
         key: 1,
@@ -213,6 +231,7 @@ const itemList = reactive<itemDataType []>([
     },
 ])
 
+// 项目校验下拉框选项
 const inspectionItemSelectOptions = reactive<inspectionItemSelectType []>([
     { value: 'Appearance', label: '外观', indicator: '白色～类白色粉末' },
     { value: 'Melting point', label: '熔点', indicator: '77.0~81.0' },
@@ -223,8 +242,10 @@ const inspectionItemSelectOptions = reactive<inspectionItemSelectType []>([
     { value: 'Assay', label: '含量，%', indicator: '96.0min' },
 ])
 
+// 项目列表条数
 const listCount = computed(() => itemList.length + 1)
 
+// 项目列表新增行
 const addItemRow = () => {
     itemList.push({
         key: listCount.value,
@@ -235,15 +256,41 @@ const addItemRow = () => {
     })
 }
 
+// 项目列表删除行
 const deleteItemRow = (index: number) => {
     itemList.splice(index, 1)
 }
 
+// 项目列表修改项目校验
 const changeInspectionItem = (record: itemDataType) => {
     const item = inspectionItemSelectOptions.find(item => item.value == record.inspectionItem)
     record.indicator = item ? item.indicator : ''
     record.inspectionItemName = item ? item.label : ''
 }
 
+const audit = ref<string>()
 
+const visible = ref<boolean>(false)
+
+const handleOk = () => {
+    visible.value = false
+}
 </script>
+<style lang="less">
+.full-modal {
+  .ant-modal {
+    max-width: 100%;
+    top: 0;
+    padding-bottom: 0;
+    margin: 0;
+  }
+  .ant-modal-content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh);
+  }
+  .ant-modal-body {
+    flex: 1;
+  }
+}
+</style>

@@ -30,7 +30,7 @@
 <script lang="ts" setup>
 import { UserOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
 import { ref, computed } from "vue"
-import TemplateCustomization from './TemplateCustomization.vue';
+import TemplateCustomization from '@/views/TemplateCustomization/index.vue';
 const collapsed = ref(true)
 const contentHeight = computed(() => `${document.body.clientHeight - 52}px`)
 </script>
