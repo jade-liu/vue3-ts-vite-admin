@@ -1,17 +1,22 @@
 <template>
   <div>
-    <menu-unfold-outlined v-if="collapsed" @click="opSider" style="color: #333; font-size: 16px" />
-    <menu-fold-outlined v-else @click="opSider" style="color: #333; font-size: 16px" />
+    <menu-unfold-outlined v-if="collapsed" @click="openSider" style="color: #333; font-size: 16px" />
+    <menu-fold-outlined v-else @click="closeSider" style="color: #333; font-size: 16px" />
   </div>
 </template>
 <script lang="ts" setup>
-  import { inject } from 'vue'
+  import { computed } from 'vue'
+  import { useStore } from 'vuex'
   import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
 
-  const collapsed: any = inject('collapsed')
-  const emit = defineEmits(['setSiderStatus'])
+  const store = useStore()
+  const collapsed = computed(() => store.getters.collapsed)
 
-  const opSider = () => {
-    emit('setSiderStatus', !collapsed.value)
+  const openSider = () => {
+    store.dispatch('openSidebar')
+  }
+
+  const closeSider = () => {
+    store.dispatch('closeSidebar')
   }
 </script>

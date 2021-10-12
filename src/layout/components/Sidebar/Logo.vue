@@ -5,9 +5,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { inject } from 'vue'
+  import { computed } from 'vue'
+  import { useStore } from 'vuex'
 
-  const collapsed = inject('collapsed')
+  const store = useStore()
+  const collapsed = computed(() => store.getters.collapsed)
 
   const openLink = () => {
     window.open('https://github.com/jade-liu/vue-element-admin', '_blank')

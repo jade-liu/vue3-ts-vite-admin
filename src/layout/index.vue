@@ -5,7 +5,7 @@
     </a-layout-sider>
     <a-layout>
       <a-layout-header class="header-custom-trigger">
-        <Navbar @setSiderStatus="setSiderStatus" />
+        <Navbar />
       </a-layout-header>
       <a-layout-content class="content-custom-trigger" :style="{ height: contentHeight }">
         <AppMain />
@@ -14,16 +14,16 @@
   </a-layout>
 </template>
 <script lang="ts" setup>
-  import { ref, provide, computed } from 'vue'
+  import { computed } from 'vue'
+  import { useStore } from 'vuex'
   import Sidebar from './components/sidebar/index.vue'
   import Navbar from './components/Navbar/index.vue'
   import AppMain from './components/AppMain.vue'
 
   const contentHeight = computed(() => `${document.body.clientHeight - 52}px`)
 
-  const collapsed = ref(true)
-  provide('collapsed', collapsed)
-  const setSiderStatus = (e: any) => (collapsed.value = e)
+  const store = useStore()
+  const collapsed = computed(() => store.getters.collapsed)
 </script>
 <style lang="less" scoped>
   .layout-custom-trigger {
