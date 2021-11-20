@@ -16,7 +16,7 @@
 <script lang="ts" setup>
   import { computed } from 'vue'
   import { useStore } from 'vuex'
-  import Sidebar from './components/sidebar/index.vue'
+  import Sidebar from './components/Sidebar/index.vue'
   import Navbar from './components/Navbar/index.vue'
   import AppMain from './components/AppMain.vue'
 

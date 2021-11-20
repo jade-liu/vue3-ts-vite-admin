@@ -20,7 +20,7 @@
       <a-input v-model:value="record.content" />
     </template>
     <template #action="{ index }">
-      <a-button type="danger" @click="deleteHeaderRow(index)">删除</a-button>
+      <a-button type="primary" @click="deleteHeaderRow(index)">删除</a-button>
     </template>
   </a-table>
   <!-- 按钮：添加校验项目 -->
@@ -41,7 +41,7 @@
       <a-input v-model:value="record.inspectionResult" />
     </template>
     <template #action="{ index }">
-      <a-button type="danger" @click="deleteItemRow(index)">删除</a-button>
+      <a-button type="primary" @click="deleteItemRow(index)">删除</a-button>
     </template>
   </a-table>
   <div>
