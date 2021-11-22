@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Dashboard from '@/views/Dashboard/index.vue'
+import Guide from '@/views/Guide/index.vue'
 import SystemIcon from '@/views/SystemIcon/index.vue'
 
 const routerHistory = createWebHistory()
@@ -15,6 +16,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'dashboard',
     component: Dashboard,
     meta: { title: '工作台', icon: 'DashboardOutlined' }
+  },
+  {
+    path: '/guide',
+    name: 'guide',
+    component: Guide,
+    meta: { title: '系统导航', icon: 'AimOutlined' }
   },
   {
     path: '/systemIcon',

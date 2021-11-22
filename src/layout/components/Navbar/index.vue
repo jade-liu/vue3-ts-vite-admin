@@ -1,7 +1,9 @@
 <template>
   <div>
-    <menu-unfold-outlined v-if="collapsed" @click="openSider" style="color: #333; font-size: 16px" />
-    <menu-fold-outlined v-else @click="closeSider" style="color: #333; font-size: 16px" />
+    <div id="collapse-btn">
+      <menu-unfold-outlined v-if="collapsed" @click="openSider" style="color: #333; font-size: 16px" />
+      <menu-fold-outlined v-else @click="closeSider" style="color: #333; font-size: 16px" />
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -20,3 +22,8 @@
     store.dispatch('closeSidebar')
   }
 </script>
+<style lang="less" scoped>
+  #collapse-btn {
+    display: inline-block;
+  }
+</style>

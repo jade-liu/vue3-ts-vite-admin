@@ -3,7 +3,7 @@
     <img class="logo" src="@/assets/logo.png" />
     <div class="title" v-show="!collapsed">vue3-ts-vite-admin</div>
   </div>
-  <Menu />
+  <Menu id="menu-content" />
 </template>
 <script lang="ts" setup>
   import { computed } from 'vue'
