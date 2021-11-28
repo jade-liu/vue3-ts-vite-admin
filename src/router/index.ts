@@ -3,6 +3,7 @@ import Dashboard from '@/views/Dashboard/index.vue'
 import Guide from '@/views/Guide/index.vue'
 import SystemIcon from '@/views/SystemIcon/index.vue'
 import Clipboard from '@/views/Clipboard/index.vue'
+import DragModal from '@/views/DragModal/index.vue'
 
 const routerHistory = createWebHistory()
 
@@ -35,6 +36,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'clipboard',
     component: Clipboard,
     meta: { title: 'Clipboard', icon: 'CopyOutlined' }
+  },
+  {
+    path: '/dragModal',
+    name: 'dragModal',
+    component: DragModal,
+    meta: { title: 'DragModal', icon: 'DragOutlined' }
   }
 ]
 
