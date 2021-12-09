@@ -4,6 +4,8 @@ import Guide from '@/views/Guide/index.vue'
 import SystemIcon from '@/views/SystemIcon/index.vue'
 import Clipboard from '@/views/Clipboard/index.vue'
 import DragModal from '@/views/DragModal/index.vue'
+import DragSelect from '@/views/DragSelect/index.vue'
+import DragTable from '@/views/DragTable/index.vue'
 
 const routerHistory = createWebHistory()
 
@@ -42,6 +44,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'dragModal',
     component: DragModal,
     meta: { title: 'DragModal', icon: 'DragOutlined' }
+  },
+  {
+    path: '/dragTable',
+    name: 'dragTable',
+    component: DragTable,
+    meta: { title: 'DragTable', icon: 'DragOutlined' }
   }
 ]
 
