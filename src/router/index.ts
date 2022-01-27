@@ -1,18 +1,12 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Dashboard from '@/views/Dashboard/index.vue'
-import Guide from '@/views/Guide/index.vue'
-import SystemIcon from '@/views/SystemIcon/index.vue'
-import Clipboard from '@/views/Clipboard/index.vue'
-import DragModal from '@/views/DragModal/index.vue'
-import DragSelect from '@/views/DragSelect/index.vue'
-import DragTable from '@/views/DragTable/index.vue'
+import Dashboard from '@/views/BasicFunc/Dashboard/index.vue'
+import Guide from '@/views/BasicFunc/Guide/index.vue'
+import SystemIcon from '@/views/BasicFunc/SystemIcon/index.vue'
+import Clipboard from '@/views/BasicFunc/Clipboard/index.vue'
+import DragModal from '@/views/BasicFunc/DragModal/index.vue'
+import DragTable from '@/views/BasicFunc/DragTable/index.vue'
 
 const routerHistory = createWebHistory()
-
-interface metaType {
-  title: string
-  icon: string
-}
 
 const routes: Array<RouteRecordRaw> = [
   {
