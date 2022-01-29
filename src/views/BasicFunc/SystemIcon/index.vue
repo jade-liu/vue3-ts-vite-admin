@@ -43,9 +43,9 @@
   const activeKey = ref('svg')
 
   const svgIcons: any = []
-  const icons: any = import.meta.globEager('../../icons/*.svg')
+  const icons: any = import.meta.globEager('../../../icons/*.svg')
   for (const icon in icons) {
-    const iconName = icon.replace(/^\.\.\/\.\.\/\w+\/(.*)\.\w+$/, '$1')
+    const iconName = icon.replace(/^\.\.\/\.\.\/\.\.\/\w+\/(.*)\.\w+$/, '$1')
     svgIcons.push(iconName)
   }
 
